@@ -1,6 +1,6 @@
 up: docker-up
 
-init: docker-clear docker-up api-permissions api-env api-composer api-genrsa api-migration api-fixtures frontend-env frontend-install frontend-build storage-permissions
+init: docker-clear docker-up api-permissions api-env api-composer api-genrsa api-migration api-fixtures frontend-env frontend-install frontend-build storage-permissions websocket-start
 
 docker-clear:
 	docker-compose down --remove-orphans
@@ -45,3 +45,6 @@ frontend-build:
 
 storage-permissions:
 	sudo chown 777 storage/public/video
+
+websocket-start:
+	docker-compose exec websocket-nodejs npm run start
